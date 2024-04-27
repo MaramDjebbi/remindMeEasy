@@ -82,6 +82,7 @@
         android:layout_marginBottom="7dp"
         android:backgroundTint="#CB997E"
         android:text="SUBMIT"
+        android:textColor="@color/black"
         />
 
     <TextView
