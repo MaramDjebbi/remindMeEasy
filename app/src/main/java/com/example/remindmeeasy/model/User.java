@@ -26,6 +26,11 @@ public class User {
         this.password = password;
     }
 
+
+
+
+
+
     // Getter and setter methods
 
     public int getId() {

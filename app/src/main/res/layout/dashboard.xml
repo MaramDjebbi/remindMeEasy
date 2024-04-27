@@ -4,31 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_background"
+    android:background="#CB997E"
     tools:context=".dashBoard">
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="420dp"
+        android:layout_height="60dp"
+        android:background="#CB997E"
+        android:layout_marginTop="15dp"
         android:text="My Reminders"
+        android:textAlignment="center"
         android:fontFamily="@font/abrilfatface_regular"
         android:textColor="@android:color/black"
         android:textSize="30sp"
         android:layout_centerHorizontal="true"/>
 
-    <!-- Plan 1 -->
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_below="@id/title"
+        android:layout_marginTop="30dp"
+        android:layout_width="370dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:background="#ffffff"
-        android:dividerHeight="1dp"
+        android:dividerHeight="7dp"
+        android:divider="@drawable/login_background"
         android:textColor="#ffffff" />
+<!--        android:background="@drawable/rounded_edittext_background"-->
 
 
 
-    <!-- Add New Plan Button -->
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_plan_button"
         android:layout_width="wrap_content"
@@ -38,9 +44,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:backgroundTint="#A5A58D"
         android:layout_marginBottom="16dp"
         android:contentDescription="Add new Plan"
-        android:src="@drawable/baseline_email_24" />
+        android:src="@drawable/add" />
 
 
 </RelativeLayout>
