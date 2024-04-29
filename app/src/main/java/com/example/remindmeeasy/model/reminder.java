@@ -22,21 +22,31 @@ public class reminder {
     @ColumnInfo(name = "repeat")
     private boolean repeat;
 
-    @ColumnInfo(name = "priority")
-    private int priority;
-
-    @ColumnInfo(name = "status")
-    private String status;
-
-    @ColumnInfo(name = "category")
-    private String category;
+    @ColumnInfo(name = "user_id")
+    private int userId;
+    // Constructor
 
 
-
+    public reminder(int id, String name, String description, Date dateTime, boolean repeat, int userId) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.dateTime = dateTime;
+        this.repeat = repeat;
+        this.userId = userId;
+    }
 
     // Getter and setter methods
     public int getId() {
         return id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public void setId(int id) {
@@ -59,18 +69,6 @@ public class reminder {
         this.repeat = repeat;
     }
 
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public String getName() {
         return name;
     }
@@ -87,29 +85,10 @@ public class reminder {
         return repeat;
     }
 
-    public int getPriority() {
-        return priority;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-
-
-    // Constructor
-//    public reminder(String name, String description, Date dateTime, boolean repeat, int priority, String status, String category) {
-//        this.name = name;
-//        this.description = description;
-//        this.dateTime = dateTime;
-//        this.repeat = repeat;
-//        this.priority = priority;
-//        this.status = status;
-//        this.category = category;
+//    public reminder() {
+//        return;
 //    }
+
+
 }
 

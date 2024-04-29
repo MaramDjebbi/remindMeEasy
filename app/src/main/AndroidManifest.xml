@@ -27,6 +27,9 @@
 
         <activity android:name=".dashBoard"
             android:exported="true"/>
+
+        <activity android:name=".AddReminder"
+            android:exported="true"/>
     </application>
 
 </manifest>

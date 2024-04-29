@@ -2,6 +2,7 @@ package com.example.remindmeeasy;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -60,6 +61,13 @@ public class LogIn extends AppCompatActivity {
                     if (hashedInputPassword != null && user.getPassword().equals(hashedInputPassword)) {
                         // Successful login
                         Toast.makeText(LogIn.this, "Login successful!", Toast.LENGTH_SHORT).show();
+
+                        // Store user ID in SharedPreferences
+                        SharedPreferences preferences = getSharedPreferences("user_prefs", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putInt("user_id", user.getId());
+                        editor.apply();
+
                         // Start the main activity or any other activity after login
                         startActivity(new Intent(LogIn.this, dashBoard.class));
                         finish(); // Close the login activity
@@ -74,6 +82,7 @@ public class LogIn extends AppCompatActivity {
             }
         }.execute();
     }
+
 
     private String hashPassword(String password) {
         try {

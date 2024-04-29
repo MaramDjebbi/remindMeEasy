@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CB997E"
+    android:background="#DDBEA9"
     tools:context=".dashBoard">
     <TextView
         android:id="@+id/title"
         android:layout_width="420dp"
-        android:layout_height="60dp"
-        android:background="#CB997E"
-        android:layout_marginTop="15dp"
+        android:layout_height="70dp"
+        android:background="#A5A58D"
+        android:layout_marginTop="30dp"
         android:text="My Reminders"
         android:textAlignment="center"
         android:fontFamily="@font/abrilfatface_regular"
