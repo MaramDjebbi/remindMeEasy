@@ -15,7 +15,6 @@ import com.example.remindmeeasy.DAO.ReminderDao;
 import com.example.remindmeeasy.DB.RoomDB;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class dashBoard extends AppCompatActivity {
@@ -39,6 +38,26 @@ public class dashBoard extends AppCompatActivity {
         RoomDB database = RoomDB.getInstance(getApplicationContext());
         reminderDao = database.reminderDao();
 
+        // Set up FloatingActionButton click listener for adding reminders
+        FloatingActionButton addButton = findViewById(R.id.add_plan_button);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Open activity to create a new reminder
+                Intent intent = new Intent(dashBoard.this, AddReminder.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Refresh the reminders when the activity is resumed
+        loadRemindersFromDatabase();
+    }
+
+    private void loadRemindersFromDatabase() {
         // Fetch reminders in background thread
         new Thread(new Runnable() {
             @Override
@@ -52,28 +71,5 @@ public class dashBoard extends AppCompatActivity {
                 });
             }
         }).start();
-
-        // FloatingActionButton click listener for adding reminders
-        FloatingActionButton addButton = findViewById(R.id.add_plan_button);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Open activity to create a new reminder
-                Intent intent = new Intent(dashBoard.this, AddReminder.class);
-                startActivity(intent);
-            }
-        });
-
-        // Set click listener for reminder items
-//        adapter.setOnItemClickListener(new ReminderAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(int position) {
-//                // Handle click on a reminder item
-//                // For example, you can open an activity to view/edit the reminder details
-//                // Here, we'll simply log the clicked position
-//                reminder clickedReminder = adapter.getRemindersList().get(position);
-//                // Do something with the clicked reminder
-//            }
-//        });
     }
 }
