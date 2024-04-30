@@ -1,6 +1,4 @@
-package com.example.remindmeeasy;
-
-import static kotlinx.coroutines.BuildersKt.withContext;
+package com.example.remindmeeasy.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -9,13 +7,13 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import kotlinx.coroutines.Dispatchers;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import com.example.remindmeeasy.DAO.UserDao;
 import com.example.remindmeeasy.DB.RoomDB;
+import com.example.remindmeeasy.R;
 import com.example.remindmeeasy.model.User;
 import com.google.android.material.button.MaterialButton;
 

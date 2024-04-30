@@ -1,4 +1,4 @@
-package com.example.remindmeeasy;
+package com.example.remindmeeasy.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.remindmeeasy.DB.RoomDB;
 
+import com.example.remindmeeasy.R;
 import com.example.remindmeeasy.model.User;
 import com.google.android.material.button.MaterialButton;
 import java.security.MessageDigest;

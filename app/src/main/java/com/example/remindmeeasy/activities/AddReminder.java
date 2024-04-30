@@ -1,8 +1,7 @@
-package com.example.remindmeeasy;
+package com.example.remindmeeasy.activities;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import com.example.remindmeeasy.DB.RoomDB;
+import com.example.remindmeeasy.R;
 import com.example.remindmeeasy.model.reminder;
 
 import java.text.ParseException;

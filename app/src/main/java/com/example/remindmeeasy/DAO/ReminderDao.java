@@ -9,6 +9,7 @@ import androidx.room.Update;
 
 import com.example.remindmeeasy.model.reminder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Dao
@@ -16,6 +17,7 @@ public interface ReminderDao {
 
     @Query("SELECT * FROM reminders")
     List<reminder> getAllReminders();
+
 
     // Get a specific reminder by ID
     @Query("SELECT * FROM reminders WHERE id = :id")

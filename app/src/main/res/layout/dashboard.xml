@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DDBEA9"
-    tools:context=".dashBoard">
+    android:background="#B7B7A4"
+    tools:context=".activities.dashBoard">
     <TextView
         android:id="@+id/title"
         android:layout_width="420dp"
         android:layout_height="70dp"
-        android:background="#A5A58D"
+        android:background="#B7B7A4"
         android:layout_marginTop="30dp"
         android:text="My Reminders"
         android:textAlignment="center"
@@ -28,7 +28,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:dividerHeight="7dp"
-        android:divider="@drawable/login_background"
         android:textColor="#ffffff" />
 <!--        android:background="@drawable/rounded_edittext_background"-->
 

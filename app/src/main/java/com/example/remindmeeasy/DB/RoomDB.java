@@ -12,7 +12,7 @@ import com.example.remindmeeasy.DAO.UserDao;
 import com.example.remindmeeasy.model.User;
 import com.example.remindmeeasy.model.reminder;
 
-@Database(entities = {User.class, reminder.class}, version = 9, exportSchema = false)
+@Database(entities = {User.class, reminder.class}, version = 10, exportSchema = false)
 @TypeConverters(DateConverter.class)
 public abstract class RoomDB extends RoomDatabase {
 
