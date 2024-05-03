@@ -14,9 +14,9 @@ import com.example.remindmeeasy.model.reminder;
 import com.example.remindmeeasy.DAO.ReminderDao;
 import com.example.remindmeeasy.DB.RoomDB;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.room.Delete;
 
 import java.util.List;
-
 public class dashBoard extends AppCompatActivity {
 
     private ReminderDao reminderDao;
@@ -48,6 +48,24 @@ public class dashBoard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Set up the delete button click listener for the adapter
+        adapter.setOnDeleteClickListener(new ReminderAdapter.OnDeleteClickListener() {
+            @Override
+            public void onDeleteClick(int position) {
+                // Handle delete button click here
+                deleteReminder(adapter.getReminderAt(position));
+            }
+        });
+
+        // Set up the update button click listener for the adapter
+        adapter.setOnUpdateClickListener(new ReminderAdapter.OnUpdateClickListener() {
+            @Override
+            public void onUpdateClick(int position) {
+                // Handle update button click here
+                updateReminder(adapter.getReminderAt(position));
+            }
+        });
     }
 
     @Override
@@ -71,5 +89,27 @@ public class dashBoard extends AppCompatActivity {
                 });
             }
         }).start();
+    }
+
+    // Method to delete a reminder
+    private void deleteReminder(reminder reminder) {
+        // Perform deletion operation on a background thread
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // Delete reminder from the database
+                reminderDao.deleteReminder(reminder);
+                // Reload reminders from the database
+                loadRemindersFromDatabase();
+            }
+        }).start();
+    }
+
+    // Method to update a reminder
+    private void updateReminder(reminder reminder) {
+        // Start the AddReminder activity with the reminder ID to perform the update
+        Intent intent = new Intent(dashBoard.this, AddReminder.class);
+        intent.putExtra("reminder_id", reminder.getId());
+        startActivity(intent);
     }
 }

@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B7B7A4"
+    android:background="#DED0B6"
     tools:context=".activities.dashBoard">
     <TextView
         android:id="@+id/title"
         android:layout_width="420dp"
         android:layout_height="70dp"
-        android:background="#B7B7A4"
+        android:background="#DED0B6"
         android:layout_marginTop="30dp"
         android:text="My Reminders"
         android:textAlignment="center"
