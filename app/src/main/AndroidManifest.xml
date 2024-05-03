@@ -12,9 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RemindMeEasy"
         tools:targetApi="31" >
-        <activity
-            android:name=".activities.Logout"
-            android:exported="false" />
+
         <activity
             android:name=".activities.LogIn"
             android:exported="true" >
@@ -32,6 +30,9 @@
             android:exported="true" />
         <activity
             android:name=".activities.AddReminder"
+            android:exported="true" />
+        <activity
+            android:name=".activities.EditReminder"
             android:exported="true" />
     </application>
 

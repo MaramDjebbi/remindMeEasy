@@ -3,10 +3,12 @@ package com.example.remindmeeasy.model;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity(tableName = "reminders")
-public class reminder {
+public class reminder implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
 

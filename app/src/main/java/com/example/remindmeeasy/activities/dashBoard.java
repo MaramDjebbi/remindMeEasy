@@ -41,6 +41,7 @@ public class dashBoard extends AppCompatActivity {
 
         // Set up FloatingActionButton click listener for adding reminders
         FloatingActionButton addButton = findViewById(R.id.add_plan_button);
+
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +50,6 @@ public class dashBoard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         // Set up the delete button click listener for the adapter
         adapter.setOnDeleteClickListener(new ReminderAdapter.OnDeleteClickListener() {
             @Override
@@ -58,6 +58,15 @@ public class dashBoard extends AppCompatActivity {
                 deleteReminder(adapter.getReminderAt(position));
             }
         });
+
+        adapter.setOnUpdateClickListener(new ReminderAdapter.OnUpdateClickListener() {
+            @Override
+            public void onUpdateClick(int position) {
+                // Handle delete button click here
+                updateReminder(adapter.getReminderAt(position));
+            }
+        });
+
 
         // Set up logout button click listener
         findViewById(R.id.logoutButton).setOnClickListener(new View.OnClickListener() {
@@ -68,6 +77,14 @@ public class dashBoard extends AppCompatActivity {
         });
     }
 
+
+
+    public void updateReminder(reminder clickedReminder) {
+        // Open activity to edit the selected reminder
+        Intent intent = new Intent(dashBoard.this, EditReminder.class);
+        intent.putExtra("reminder", clickedReminder);
+        startActivity(intent);
+    }
     @Override
     protected void onResume() {
         super.onResume();

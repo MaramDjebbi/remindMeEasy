@@ -75,17 +75,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/forgotpass"
-        android:layout_below="@id/login"
-        android:text="Forgot Password ?"
-        android:textColor="#CB997E"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="1dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/already"
-        android:layout_below="@id/forgotpass"
+        android:layout_below="@id/login"
         android:text="You don't have an account ?"
         android:textColor="@color/black"
         android:layout_marginLeft="110dp"
@@ -97,19 +88,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/signup"
-        android:layout_alignLeft="@id/forgotpass"
         android:text="Sign up"
         android:textColor="#CB997E"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="33dp"
-        android:layout_marginTop="480dp"
+        android:layout_marginTop="460dp"
         />
 
     <ImageView
         android:id="@+id/myImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/forgotpass"
+        android:layout_below="@id/login"
         android:layout_marginStart="10dp"
         android:layout_marginTop="90dp"
         android:layout_marginEnd="60dp"
