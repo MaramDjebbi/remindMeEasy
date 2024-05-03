@@ -20,28 +20,20 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+
 public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.ReminderViewHolder> {
 
     private List<reminder> remindersList = new ArrayList<>();
     private OnItemClickListener clickListener;
     private OnDeleteClickListener deleteClickListener;
-    private OnUpdateClickListener updateClickListener; // Interface for update click listener
     private Context context;
 
     public interface OnDeleteClickListener {
         void onDeleteClick(int position);
     }
 
-    public interface OnUpdateClickListener {
-        void onUpdateClick(int position);
-    }
-
     public void setOnDeleteClickListener(OnDeleteClickListener listener) {
         this.deleteClickListener = listener;
-    }
-
-    public void setOnUpdateClickListener(OnUpdateClickListener listener) {
-        this.updateClickListener = listener;
     }
 
     public ReminderAdapter(Context context) {
@@ -91,17 +83,6 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.Remind
                 }
             }
         });
-
-        // Set click listener for update button
-        holder.updateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int clickedPosition = holder.getAdapterPosition();
-                if (clickedPosition != RecyclerView.NO_POSITION && updateClickListener != null) {
-                    updateClickListener.onUpdateClick(clickedPosition);
-                }
-            }
-        });
     }
 
     @Override
@@ -116,7 +97,7 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.Remind
 
     public class ReminderViewHolder extends RecyclerView.ViewHolder {
         TextView reminderName, reminderDescription, reminderTime;
-        ImageButton deleteButton, updateButton;
+        ImageButton deleteButton;
 
         public ReminderViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -124,7 +105,6 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.Remind
             reminderDescription = itemView.findViewById(R.id.Description);
             reminderTime = itemView.findViewById(R.id.Time);
             deleteButton = itemView.findViewById(R.id.deleteButton);
-            updateButton = itemView.findViewById(R.id.updateButton);
         }
     }
 
@@ -132,13 +112,9 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.Remind
     public interface OnItemClickListener {
         void onItemClick(int position);
     }
-
     public reminder getReminderAt(int position) {
         return remindersList.get(position);
     }
 
 }
-
-
-
 
