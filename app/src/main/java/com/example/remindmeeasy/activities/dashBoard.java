@@ -14,6 +14,7 @@ import com.example.remindmeeasy.model.reminder;
 import com.example.remindmeeasy.DAO.ReminderDao;
 import com.example.remindmeeasy.DB.RoomDB;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.room.Delete;
 
 import java.util.List;
 
@@ -48,6 +49,15 @@ public class dashBoard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Set up the delete button click listener for the adapter
+        adapter.setOnDeleteClickListener(new ReminderAdapter.OnDeleteClickListener() {
+            @Override
+            public void onDeleteClick(int position) {
+                // Handle delete button click here
+                deleteReminder(adapter.getReminderAt(position));
+            }
+        });
     }
 
     @Override
@@ -69,6 +79,20 @@ public class dashBoard extends AppCompatActivity {
                         adapter.setReminders(reminders); // Update adapter with reminders
                     }
                 });
+            }
+        }).start();
+    }
+
+    // Method to delete a reminder
+    private void deleteReminder(reminder reminder) {
+        // Perform deletion operation on a background thread
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // Delete reminder from the database
+                reminderDao.deleteReminder(reminder);
+                // Reload reminders from the database
+                loadRemindersFromDatabase();
             }
         }).start();
     }
