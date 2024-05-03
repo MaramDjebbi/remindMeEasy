@@ -17,6 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.room.Delete;
 
 import java.util.List;
+
 public class dashBoard extends AppCompatActivity {
 
     private ReminderDao reminderDao;
@@ -58,12 +59,11 @@ public class dashBoard extends AppCompatActivity {
             }
         });
 
-        // Set up the update button click listener for the adapter
-        adapter.setOnUpdateClickListener(new ReminderAdapter.OnUpdateClickListener() {
+        // Set up logout button click listener
+        findViewById(R.id.logoutButton).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onUpdateClick(int position) {
-                // Handle update button click here
-                updateReminder(adapter.getReminderAt(position));
+            public void onClick(View v) {
+                logout();
             }
         });
     }
@@ -93,7 +93,7 @@ public class dashBoard extends AppCompatActivity {
 
     // Method to delete a reminder
     private void deleteReminder(reminder reminder) {
-        // Perform deletion operation on a background thread
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -105,11 +105,12 @@ public class dashBoard extends AppCompatActivity {
         }).start();
     }
 
-    // Method to update a reminder
-    private void updateReminder(reminder reminder) {
-        // Start the AddReminder activity with the reminder ID to perform the update
-        Intent intent = new Intent(dashBoard.this, AddReminder.class);
-        intent.putExtra("reminder_id", reminder.getId());
+    private void logout() {
+
+        Intent intent = new Intent(dashBoard.this, LogIn.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        finish();
     }
 }
+
