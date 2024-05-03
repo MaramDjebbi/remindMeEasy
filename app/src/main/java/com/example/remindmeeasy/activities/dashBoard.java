@@ -17,7 +17,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.room.Delete;
 
 import java.util.List;
-
 public class dashBoard extends AppCompatActivity {
 
     private ReminderDao reminderDao;
@@ -58,6 +57,15 @@ public class dashBoard extends AppCompatActivity {
                 deleteReminder(adapter.getReminderAt(position));
             }
         });
+
+        // Set up the update button click listener for the adapter
+        adapter.setOnUpdateClickListener(new ReminderAdapter.OnUpdateClickListener() {
+            @Override
+            public void onUpdateClick(int position) {
+                // Handle update button click here
+                updateReminder(adapter.getReminderAt(position));
+            }
+        });
     }
 
     @Override
@@ -95,5 +103,13 @@ public class dashBoard extends AppCompatActivity {
                 loadRemindersFromDatabase();
             }
         }).start();
+    }
+
+    // Method to update a reminder
+    private void updateReminder(reminder reminder) {
+        // Start the AddReminder activity with the reminder ID to perform the update
+        Intent intent = new Intent(dashBoard.this, AddReminder.class);
+        intent.putExtra("reminder_id", reminder.getId());
+        startActivity(intent);
     }
 }
