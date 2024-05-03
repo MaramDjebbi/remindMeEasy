@@ -22,14 +22,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_below="@id/title"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="0dp"
         android:layout_width="370dp"
         android:layout_centerHorizontal="true"
-        android:layout_height="match_parent"
+        android:layout_height="555dp"
         android:layout_gravity="center"
         android:dividerHeight="7dp"
         android:textColor="#ffffff" />
-<!--        android:background="@drawable/rounded_edittext_background"-->
 
 
 
@@ -47,18 +46,20 @@
         android:layout_marginBottom="16dp"
         android:contentDescription="Add new Plan"
         android:src="@drawable/add" />
-    <TextView
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/logoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="20dp"
-        android:text="Click to logout"
-        android:textColor="#222831"
-        android:textSize="12sp"
-         />
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#A5A58D"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Add new Plan"
+        android:src="@drawable/baseline_logout_24" />
+
 
 
 
