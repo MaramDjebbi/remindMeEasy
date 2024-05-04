@@ -108,17 +108,15 @@
 
         <Switch
             android:id="@+id/btnNotif"
-            android:layout_width="80dp"
-            android:layout_height="20dp"
+            android:layout_width="40dp"
+            android:layout_height="10dp"
             android:layout_marginTop="478dp"
-            android:layout_marginStart="230dp"
+            android:layout_marginStart="280dp"
             android:thumb="@drawable/thumb"
             android:track="@drawable/track"
-            app:showText="true"
             android:textColor="@color/black"
-            android:textOn="On"
-            android:textOff="Off"
-            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            />
 
 
         />

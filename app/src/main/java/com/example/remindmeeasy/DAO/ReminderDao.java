@@ -19,6 +19,9 @@ public interface ReminderDao {
     @Query("SELECT * FROM reminders")
     List<reminder> getAllReminders();
 
+    // Get all reminders for a specific user by user ID
+    @Query("SELECT * FROM reminders WHERE user_id = :userId")
+    List<reminder> getAllRemindersByUserId(int userId);
 
     // Get a specific reminder by ID
     @Query("SELECT * FROM reminders WHERE id = :id")

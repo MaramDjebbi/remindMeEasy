@@ -3,6 +3,7 @@ package com.example.remindmeeasy.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.content.SharedPreferences;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,11 +24,17 @@ public class dashBoard extends AppCompatActivity {
     private ReminderDao reminderDao;
     private RecyclerView reminderRecyclerView;
     private ReminderAdapter adapter;
+    private int userId; // Variable to store user ID
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard);
+
+        // Retrieve user ID from SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("user_prefs", MODE_PRIVATE);
+        userId = preferences.getInt("user_id", -1); // Default value -1 if not found
 
         // Initialize views
         reminderRecyclerView = findViewById(R.id.recycler);
@@ -93,11 +100,11 @@ public class dashBoard extends AppCompatActivity {
     }
 
     private void loadRemindersFromDatabase() {
-        // Fetch reminders in background thread
+        // Fetch reminders specific to the user ID in a background thread
         new Thread(new Runnable() {
             @Override
             public void run() {
-                final List<reminder> reminders = reminderDao.getAllReminders();
+                final List<reminder> reminders = reminderDao.getAllRemindersByUserId(userId);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -123,6 +130,10 @@ public class dashBoard extends AppCompatActivity {
     }
 
     private void logout() {
+
+        // Clear SharedPreferences and navigate to login activity
+        SharedPreferences preferences = getSharedPreferences("user_prefs", MODE_PRIVATE);
+        preferences.edit().clear().apply();
 
         Intent intent = new Intent(dashBoard.this, LogIn.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
